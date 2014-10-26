@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D4DB43819FC35B8003901CF /* PLMediaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4DB43719FC35B8003901CF /* PLMediaInfo.m */; };
+		9D4DB43919FC35B8003901CF /* PLMediaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4DB43719FC35B8003901CF /* PLMediaInfo.m */; };
+		9D4DB44119FC80D9003901CF /* UIColor+Popular.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4DB44019FC80D9003901CF /* UIColor+Popular.m */; };
+		9D4DB44219FC80D9003901CF /* UIColor+Popular.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4DB44019FC80D9003901CF /* UIColor+Popular.m */; };
+		9D69498F19FCC9E500A2B28A /* PLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D69498E19FCC9E500A2B28A /* PLLoginViewController.m */; };
 		9DEDE3BC19FB8E9F00B1F4C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDE3BB19FB8E9F00B1F4C5 /* main.m */; };
-		9DEDE3BF19FB8E9F00B1F4C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDE3BE19FB8E9F00B1F4C5 /* AppDelegate.m */; };
-		9DEDE3C219FB8E9F00B1F4C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDE3C119FB8E9F00B1F4C5 /* ViewController.m */; };
 		9DEDE3C519FB8E9F00B1F4C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DEDE3C319FB8E9F00B1F4C5 /* Main.storyboard */; };
 		9DEDE3C719FB8E9F00B1F4C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DEDE3C619FB8E9F00B1F4C5 /* Images.xcassets */; };
 		9DEDE3CA19FB8E9F00B1F4C5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DEDE3C819FB8E9F00B1F4C5 /* LaunchScreen.xib */; };
 		9DEDE3D619FB8E9F00B1F4C5 /* PopularTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDE3D519FB8E9F00B1F4C5 /* PopularTests.m */; };
+		9DEDE3E219FB904300B1F4C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDE3E119FB904300B1F4C5 /* AppDelegate.m */; };
+		9DEDE3E719FB916600B1F4C5 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDE3E619FB916600B1F4C5 /* RootViewController.m */; };
+		9DEDE3EA19FB925F00B1F4C5 /* PLDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDE3E919FB925F00B1F4C5 /* PLDataModel.m */; };
+		9DEDE3EB19FB925F00B1F4C5 /* PLDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDE3E919FB925F00B1F4C5 /* PLDataModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +34,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D4DB43619FC35B8003901CF /* PLMediaInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLMediaInfo.h; path = Source/Model/PLMediaInfo.h; sourceTree = "<group>"; };
+		9D4DB43719FC35B8003901CF /* PLMediaInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLMediaInfo.m; path = Source/Model/PLMediaInfo.m; sourceTree = "<group>"; };
+		9D4DB43F19FC80D9003901CF /* UIColor+Popular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Popular.h"; path = "Source/Utility Classes/UIColor+Popular.h"; sourceTree = "<group>"; };
+		9D4DB44019FC80D9003901CF /* UIColor+Popular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Popular.m"; path = "Source/Utility Classes/UIColor+Popular.m"; sourceTree = "<group>"; };
+		9D69498D19FCC9E500A2B28A /* PLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLLoginViewController.h; path = Source/ViewControllers/PLLoginViewController.h; sourceTree = "<group>"; };
+		9D69498E19FCC9E500A2B28A /* PLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLLoginViewController.m; path = Source/ViewControllers/PLLoginViewController.m; sourceTree = "<group>"; };
 		9DEDE3B619FB8E9F00B1F4C5 /* Popular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DEDE3BA19FB8E9F00B1F4C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DEDE3BB19FB8E9F00B1F4C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9DEDE3BD19FB8E9F00B1F4C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9DEDE3BE19FB8E9F00B1F4C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9DEDE3C019FB8E9F00B1F4C5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9DEDE3C119FB8E9F00B1F4C5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9DEDE3C419FB8E9F00B1F4C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9DEDE3C619FB8E9F00B1F4C5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9DEDE3C919FB8E9F00B1F4C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9DEDE3CF19FB8E9F00B1F4C5 /* PopularTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopularTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DEDE3D419FB8E9F00B1F4C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DEDE3D519FB8E9F00B1F4C5 /* PopularTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopularTests.m; sourceTree = "<group>"; };
+		9DEDE3E019FB904300B1F4C5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Source/AppDelegate.h; sourceTree = "<group>"; };
+		9DEDE3E119FB904300B1F4C5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Source/AppDelegate.m; sourceTree = "<group>"; };
+		9DEDE3E519FB916600B1F4C5 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = Source/ViewControllers/RootViewController.h; sourceTree = "<group>"; };
+		9DEDE3E619FB916600B1F4C5 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = Source/ViewControllers/RootViewController.m; sourceTree = "<group>"; };
+		9DEDE3E819FB925F00B1F4C5 /* PLDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLDataModel.h; path = Source/Model/PLDataModel.h; sourceTree = "<group>"; };
+		9DEDE3E919FB925F00B1F4C5 /* PLDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLDataModel.m; path = Source/Model/PLDataModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D4DB43E19FC8065003901CF /* Utility Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9D4DB43F19FC80D9003901CF /* UIColor+Popular.h */,
+				9D4DB44019FC80D9003901CF /* UIColor+Popular.m */,
+			);
+			name = "Utility Classes";
+			sourceTree = "<group>";
+		};
 		9DEDE3AD19FB8E9F00B1F4C5 = {
 			isa = PBXGroup;
 			children = (
@@ -81,13 +105,13 @@
 		9DEDE3B819FB8E9F00B1F4C5 /* Popular */ = {
 			isa = PBXGroup;
 			children = (
-				9DEDE3BD19FB8E9F00B1F4C5 /* AppDelegate.h */,
-				9DEDE3BE19FB8E9F00B1F4C5 /* AppDelegate.m */,
-				9DEDE3C019FB8E9F00B1F4C5 /* ViewController.h */,
-				9DEDE3C119FB8E9F00B1F4C5 /* ViewController.m */,
 				9DEDE3C319FB8E9F00B1F4C5 /* Main.storyboard */,
 				9DEDE3C619FB8E9F00B1F4C5 /* Images.xcassets */,
 				9DEDE3C819FB8E9F00B1F4C5 /* LaunchScreen.xib */,
+				9DEDE3DF19FB901E00B1F4C5 /* ApplicationDelegate */,
+				9DEDE3E319FB909100B1F4C5 /* ViewControllers */,
+				9DEDE3E419FB910200B1F4C5 /* Model */,
+				9D4DB43E19FC8065003901CF /* Utility Classes */,
 				9DEDE3B919FB8E9F00B1F4C5 /* Supporting Files */,
 			);
 			path = Popular;
@@ -117,6 +141,37 @@
 				9DEDE3D419FB8E9F00B1F4C5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9DEDE3DF19FB901E00B1F4C5 /* ApplicationDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				9DEDE3E019FB904300B1F4C5 /* AppDelegate.h */,
+				9DEDE3E119FB904300B1F4C5 /* AppDelegate.m */,
+			);
+			name = ApplicationDelegate;
+			sourceTree = "<group>";
+		};
+		9DEDE3E319FB909100B1F4C5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9DEDE3E519FB916600B1F4C5 /* RootViewController.h */,
+				9DEDE3E619FB916600B1F4C5 /* RootViewController.m */,
+				9D69498D19FCC9E500A2B28A /* PLLoginViewController.h */,
+				9D69498E19FCC9E500A2B28A /* PLLoginViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9DEDE3E419FB910200B1F4C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9DEDE3E819FB925F00B1F4C5 /* PLDataModel.h */,
+				9DEDE3E919FB925F00B1F4C5 /* PLDataModel.m */,
+				9D4DB43619FC35B8003901CF /* PLMediaInfo.h */,
+				9D4DB43719FC35B8003901CF /* PLMediaInfo.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DEDE3C219FB8E9F00B1F4C5 /* ViewController.m in Sources */,
-				9DEDE3BF19FB8E9F00B1F4C5 /* AppDelegate.m in Sources */,
+				9D69498F19FCC9E500A2B28A /* PLLoginViewController.m in Sources */,
+				9DEDE3E719FB916600B1F4C5 /* RootViewController.m in Sources */,
+				9DEDE3E219FB904300B1F4C5 /* AppDelegate.m in Sources */,
 				9DEDE3BC19FB8E9F00B1F4C5 /* main.m in Sources */,
+				9D4DB43819FC35B8003901CF /* PLMediaInfo.m in Sources */,
+				9D4DB44119FC80D9003901CF /* UIColor+Popular.m in Sources */,
+				9DEDE3EA19FB925F00B1F4C5 /* PLDataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +289,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DEDE3D619FB8E9F00B1F4C5 /* PopularTests.m in Sources */,
+				9D4DB44219FC80D9003901CF /* UIColor+Popular.m in Sources */,
+				9D4DB43919FC35B8003901CF /* PLMediaInfo.m in Sources */,
+				9DEDE3EB19FB925F00B1F4C5 /* PLDataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +359,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -333,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -346,6 +408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Popular/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -356,6 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Popular/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -414,6 +478,7 @@
 				9DEDE3DB19FB8E9F00B1F4C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9DEDE3DC19FB8E9F00B1F4C5 /* Build configuration list for PBXNativeTarget "PopularTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +487,7 @@
 				9DEDE3DE19FB8E9F00B1F4C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
