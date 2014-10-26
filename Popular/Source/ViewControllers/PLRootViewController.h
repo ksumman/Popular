@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PLViewController.h
 //  Popular
 //
 //  Created by Kumar Summan on 10/25/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController
+@interface PLRootViewController : UIViewController
 
 
 @end

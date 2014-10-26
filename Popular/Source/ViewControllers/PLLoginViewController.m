@@ -43,6 +43,8 @@
 {
     NSString *urlString = [[request URL] absoluteString];
     NSRange accessTokenKeyRange = [urlString rangeOfString: @"#access_token="];
+    
+    // look for access token in the url string.
     if(accessTokenKeyRange.location != NSNotFound)
     {
         NSInteger urlStringLength = urlString.length;

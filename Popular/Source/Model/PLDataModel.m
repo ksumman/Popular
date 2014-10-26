@@ -50,7 +50,7 @@ static dispatch_once_t dispatchOnceToken;
 +(NSString *) loginURLString
 {
     NSString *redirectURI = @"https://localhost";
-    NSString *scopes = @"likes";
+    NSString *scopes = @"basic+likes";
     NSString *loginUrlString = [NSString stringWithFormat:@"https://instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&scope=%@&response_type=token", InstagramAPIClientID , redirectURI, scopes];
     return loginUrlString;
 }
@@ -91,7 +91,7 @@ static dispatch_once_t dispatchOnceToken;
             // parse result data
             for(NSDictionary *photoInfoDictionary in photosData)
             {
-                PLMediaInfo *photo = [[PLMediaInfo alloc] initWithDictionary: photoInfoDictionary];
+                PLMediaItem *photo = [[PLMediaItem alloc] initWithDictionary: photoInfoDictionary];
                 if(photo)
                 {
                     [photos addObject: photo];

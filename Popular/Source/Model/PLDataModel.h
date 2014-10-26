@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PLMediaInfo.h"
+#import "PLMediaItem.h"
 
 typedef void (^LoginRequestCompletionBlock)(NSError *error);
 typedef void (^FetchImagesRequestCompletionBlock)(NSArray *images, NSError *error);
