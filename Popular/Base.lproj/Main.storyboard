@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -31,7 +32,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Gmg-zl-hIE">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="Gmg-zl-hIE">
                             <size key="itemSize" width="150" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -46,6 +47,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="IZn-rf-Xyf" kind="presentation" identifier="ShowImageSegueIdentifier" modalPresentationStyle="fullScreen" id="Vfg-yY-FxE"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -56,7 +60,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pnz-AL-kF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="91" y="1129"/>
+            <point key="canvasLocation" x="225" y="1081"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="jix-He-7vo">
@@ -90,6 +94,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YRx-4h-s3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1050" y="374"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="xur-5Y-2He">
+            <objects>
+                <viewController storyboardIdentifier="PLImageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IZn-rf-Xyf" customClass="PLImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2RX-yJ-k32"/>
+                        <viewControllerLayoutGuide type="bottom" id="XeA-1Y-meO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KTg-Qa-Fvn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TEN-Dl-LRZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="532"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TEN-Dl-LRZ" secondAttribute="height" id="QiO-zE-JtC"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixb-sP-3on">
+                                <rect key="frame" x="156" y="559" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmr-3S-M7G">
+                                <rect key="frame" x="32" y="555" width="80" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="vT5-fd-A4D"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="Like">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="likeButtonTapped:" destination="IZn-rf-Xyf" eventType="touchUpInside" id="H93-Wr-EsQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XeA-1Y-meO" firstAttribute="top" secondItem="kmr-3S-M7G" secondAttribute="bottom" constant="20" id="2EC-gv-mcL"/>
+                            <constraint firstItem="kmr-3S-M7G" firstAttribute="leading" secondItem="KTg-Qa-Fvn" secondAttribute="leadingMargin" constant="20" id="4Pa-7H-XRe"/>
+                            <constraint firstAttribute="trailing" secondItem="TEN-Dl-LRZ" secondAttribute="trailing" id="RPu-K5-xJz"/>
+                            <constraint firstItem="ixb-sP-3on" firstAttribute="leading" secondItem="kmr-3S-M7G" secondAttribute="trailing" constant="10" id="a0A-LO-z9a"/>
+                            <constraint firstAttribute="centerY" secondItem="TEN-Dl-LRZ" secondAttribute="centerY" id="aDo-TR-gLH"/>
+                            <constraint firstItem="XeA-1Y-meO" firstAttribute="top" secondItem="ixb-sP-3on" secondAttribute="bottom" constant="25" id="fYu-x2-vQZ"/>
+                            <constraint firstItem="TEN-Dl-LRZ" firstAttribute="leading" secondItem="KTg-Qa-Fvn" secondAttribute="leading" id="o16-a8-uk2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="TEN-Dl-LRZ" id="QYM-L6-i4x"/>
+                        <outlet property="likeButton" destination="kmr-3S-M7G" id="Bhl-uU-lnP"/>
+                        <outlet property="likeCountLabel" destination="ixb-sP-3on" id="2JX-iT-TNJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xBU-Kp-CCL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1002" y="1135"/>
         </scene>
     </scenes>
 </document>

@@ -11,8 +11,5 @@
 @interface UIColor (Popular)
 
 +(UIColor *) plThemeColor1;
-+(UIColor *) plThemeColor2;
-+(UIColor *) plLightGrayColor;
-+(UIColor *) plDarkGrayColor;
 
 @end

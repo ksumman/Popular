@@ -19,9 +19,11 @@ typedef void (^FetchImagesRequestCompletionBlock)(NSArray *images, NSError *erro
 //! @returns URL string to load the log-in page.
 +(NSString *) loginURLString;
 
-
 -(void) userAuthenticationSuccessful: (NSString *) accessToken;
 
 -(void) fetchPopularImages: (FetchImagesRequestCompletionBlock) completionBlock;
+
+//! Call this method to like/unlike the media item.
+-(void) toggleLikeStatus: (PLMediaItem *) mediaItem;
 
 @end

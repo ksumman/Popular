@@ -9,7 +9,11 @@
 #import "PLMediaCollectionViewController.h"
 #import "PLDataModel.h"
 #import "PLMediaCell.h"
+#import "PLImageViewController.h"
 #import "UIColor+Popular.h"
+
+
+static NSString * const ShowImageSegueIdentifier = @"ShowImageSegueIdentifier";
 
 /*--------------------------------------------------------------------------------*/
 @interface PLMediaCollectionViewController ()<UICollectionViewDelegate,
@@ -30,11 +34,11 @@ static NSString * const reuseIdentifier = @"PLMediaCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor plLightGrayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
 
     self.mediaItems = [[NSMutableArray alloc] init];
     self.thumbnailQueue = [[NSOperationQueue alloc] init];
-    self.thumbnailQueue.maxConcurrentOperationCount = 5;
+    self.thumbnailQueue.maxConcurrentOperationCount = 4;
 
     // Register cell classes
     [self.collectionView registerClass:[PLMediaCell class]
@@ -133,19 +137,33 @@ static NSString * const reuseIdentifier = @"PLMediaCell";
 /*--------------------------------------------------------------------------------*/
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PLMediaItem *itemSelected = [self.mediaItems objectAtIndex: indexPath.item];
-    
+    [self performSegueWithIdentifier:ShowImageSegueIdentifier
+                              sender:self];
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    if([[segue identifier] isEqualToString: ShowImageSegueIdentifier])
+    {
+        PLImageViewController *destinationImageViewController = segue.destinationViewController;
+        NSArray *indexPaths = [self.collectionView indexPathsForSelectedItems];
+        NSIndexPath *selectedItemIndexPath = [indexPaths firstObject];
+        PLMediaItem *selectedItem = [self.mediaItems objectAtIndex: selectedItemIndexPath.item];
+        destinationImageViewController.mediaItem = selectedItem;
+    }
 }
 
 /*--------------------------------------------------------------------------------*/
 #pragma mark <UICollectionViewDelegateFlowLayout>
 /*--------------------------------------------------------------------------------*/
 
-- (CGSize)collectionView:(UICollectionView *)collectionView
+-(CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout*)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(250.0, 250.0);
+    return CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.width);
 }
+
 
 @end

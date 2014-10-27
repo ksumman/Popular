@@ -96,13 +96,6 @@
 }
 
 /*--------------------------------------------------------------------------------*/
--(NSString *) description
-{
-    NSString *description = [NSString stringWithFormat: @"\nType: %ld\nID: %@\nLow resolution size: %@\nStandard resolution size: %@\nThumbnail size: %@\n", self.type,  self.identifier, NSStringFromCGSize(self.lowResImageSize), NSStringFromCGSize(self.standardResImageSize), NSStringFromCGSize(self.thumbnailSize)];
-    return description;
-}
-
-/*--------------------------------------------------------------------------------*/
 #pragma mark - Images
 /*--------------------------------------------------------------------------------*/
 -(UIImage *) lowResImage
@@ -142,6 +135,29 @@
         _thumbnailImage = image;
     }
     return _thumbnailImage;
+}
+
+/*--------------------------------------------------------------------------------*/
+#pragma mark - Helper Methods
+/*--------------------------------------------------------------------------------*/
+-(NSString *) description
+{
+    NSString *description = [NSString stringWithFormat: @"\nType: %ld\nID: %@\nLow resolution size: %@\nStandard resolution size: %@\nThumbnail size: %@\n", self.type,  self.identifier, NSStringFromCGSize(self.lowResImageSize), NSStringFromCGSize(self.standardResImageSize), NSStringFromCGSize(self.thumbnailSize)];
+    return description;
+}
+
+/*--------------------------------------------------------------------------------*/
+-(BOOL) isEqual:(id)object
+{
+    if(object == self)
+    {
+        return YES;
+    }
+    else if([object isKindOfClass:[PLMediaItem class]])
+    {
+        return [[((PLMediaItem *) object) identifier] isEqualToString: self.identifier];
+    }
+    return NO;
 }
 
 @end

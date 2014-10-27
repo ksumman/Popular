@@ -16,6 +16,8 @@
 		9D69499A19FD75FB00A2B28A /* PLMediaCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D69499819FD75FB00A2B28A /* PLMediaCollectionViewController.m */; };
 		9D69499D19FD804800A2B28A /* PLMediaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D69499C19FD804800A2B28A /* PLMediaCell.m */; };
 		9D69499E19FD804800A2B28A /* PLMediaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D69499C19FD804800A2B28A /* PLMediaCell.m */; };
+		9D6949AA19FDB6F200A2B28A /* PLImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6949A919FDB6F100A2B28A /* PLImageViewController.m */; };
+		9D6949AB19FDB6F200A2B28A /* PLImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6949A919FDB6F100A2B28A /* PLImageViewController.m */; };
 		9DEDE3BC19FB8E9F00B1F4C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEDE3BB19FB8E9F00B1F4C5 /* main.m */; };
 		9DEDE3C519FB8E9F00B1F4C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DEDE3C319FB8E9F00B1F4C5 /* Main.storyboard */; };
 		9DEDE3C719FB8E9F00B1F4C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DEDE3C619FB8E9F00B1F4C5 /* Images.xcassets */; };
@@ -48,6 +50,8 @@
 		9D69499819FD75FB00A2B28A /* PLMediaCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLMediaCollectionViewController.m; path = Source/ViewControllers/PLMediaCollectionViewController.m; sourceTree = "<group>"; };
 		9D69499B19FD804800A2B28A /* PLMediaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLMediaCell.h; path = Source/ViewControllers/PLMediaCell.h; sourceTree = "<group>"; };
 		9D69499C19FD804800A2B28A /* PLMediaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLMediaCell.m; path = Source/ViewControllers/PLMediaCell.m; sourceTree = "<group>"; };
+		9D6949A819FDB6F100A2B28A /* PLImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLImageViewController.h; path = Source/ViewControllers/PLImageViewController.h; sourceTree = "<group>"; };
+		9D6949A919FDB6F100A2B28A /* PLImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLImageViewController.m; path = Source/ViewControllers/PLImageViewController.m; sourceTree = "<group>"; };
 		9DEDE3B619FB8E9F00B1F4C5 /* Popular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DEDE3BA19FB8E9F00B1F4C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DEDE3BB19FB8E9F00B1F4C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -92,13 +96,13 @@
 			name = "Utility Classes";
 			sourceTree = "<group>";
 		};
-		9D69499F19FD8D8C00A2B28A /* Collection View Classes */ = {
+		9D69499F19FD8D8C00A2B28A /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				9D69499B19FD804800A2B28A /* PLMediaCell.h */,
 				9D69499C19FD804800A2B28A /* PLMediaCell.m */,
 			);
-			name = "Collection View Classes";
+			name = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		9DEDE3AD19FB8E9F00B1F4C5 = {
@@ -178,7 +182,9 @@
 				9D69498E19FCC9E500A2B28A /* PLLoginViewController.m */,
 				9D69499719FD75FB00A2B28A /* PLMediaCollectionViewController.h */,
 				9D69499819FD75FB00A2B28A /* PLMediaCollectionViewController.m */,
-				9D69499F19FD8D8C00A2B28A /* Collection View Classes */,
+				9D69499F19FD8D8C00A2B28A /* CollectionViewCell */,
+				9D6949A819FDB6F100A2B28A /* PLImageViewController.h */,
+				9D6949A919FDB6F100A2B28A /* PLImageViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 				9D69499D19FD804800A2B28A /* PLMediaCell.m in Sources */,
 				9D69499919FD75FB00A2B28A /* PLMediaCollectionViewController.m in Sources */,
 				9D4DB43819FC35B8003901CF /* PLMediaItem.m in Sources */,
+				9D6949AA19FDB6F200A2B28A /* PLImageViewController.m in Sources */,
 				9D4DB44119FC80D9003901CF /* UIColor+Popular.m in Sources */,
 				9DEDE3EA19FB925F00B1F4C5 /* PLDataModel.m in Sources */,
 			);
@@ -316,6 +323,7 @@
 				9D4DB44219FC80D9003901CF /* UIColor+Popular.m in Sources */,
 				9D4DB43919FC35B8003901CF /* PLMediaItem.m in Sources */,
 				9DEDE3EB19FB925F00B1F4C5 /* PLDataModel.m in Sources */,
+				9D6949AB19FDB6F200A2B28A /* PLImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
