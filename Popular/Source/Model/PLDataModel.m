@@ -126,7 +126,7 @@ static NSString * access_token;
     NSString *popularMediaURLString;
     if(access_token)
     {
-        popularMediaURLString = [NSString stringWithFormat: @"%@/v1/media/popular?client_id=%@&access_token=%@", APIHost, InstagramAPIClientID, access_token];
+        popularMediaURLString = [NSString stringWithFormat: @"%@/v1/media/popular?client_id=%@&access_token=%@&next_max_id=0", APIHost, InstagramAPIClientID, access_token];
     }
     else
     {
@@ -155,35 +155,6 @@ static NSString * access_token;
 }
 
 /*--------------------------------------------------------------------------------*/
-//-(void) likeMediaItem: (PLMediaItem *) mediaItem
-//{
-//    NSString *likeMediaURLString = [NSString stringWithFormat: @"%@/media/%@/likes", APIHost, mediaItem.identifier];
-//    NSURL *likeMediaURL = [NSURL URLWithString: likeMediaURLString];
-//    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL: likeMediaURL];
-//    [urlRequest setHTTPMethod:@"POST"];
-//    [urlRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//    [urlRequest setValue:@"utf-8" forHTTPHeaderField:@"charset"];
-//    NSString *accessTokenString = [NSString stringWithFormat:@"access_token=%@", access_token];
-//    NSData *httpBody = [accessTokenString dataUsingEncoding:NSUTF8StringEncoding];
-//    [urlRequest setHTTPBody: httpBody];
-//
-//    NSError *urlRequestError;
-//    NSHTTPURLResponse *urlResponse;
-//    [NSURLConnection sendSynchronousRequest:urlRequest
-//                          returningResponse:&urlResponse
-//                                      error:&urlRequestError];
-//    if(urlResponse.statusCode == 200)
-//    {
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            [mediaItem setUserHasLiked: YES];
-//        });
-//    }
-//    else
-//    {
-//        //TODO: handle error
-//        NSLog(@"Error occurred: %ld: %@", (long)urlResponse.statusCode, urlRequestError);
-//    }
-//}
 -(void) likeMediaItem: (PLMediaItem *) mediaItem
 {
     NSString *likeMediaURLString = [NSString stringWithFormat: @"%@/v1/media/%@/likes", APIHost, mediaItem.identifier];

@@ -81,7 +81,7 @@ static NSString * const reuseIdentifier = @"PLMediaCell";
 -(void) failedToFetchMedia: (NSError *) error
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Request Failed"
-                                                                             message:@"Model couldn't fetch images."
+                                                                             message:@"Couldn't fetch images."
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction: [UIAlertAction actionWithTitle:@"Dismiss"
                                                          style:UIAlertActionStyleDefault
