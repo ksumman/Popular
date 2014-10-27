@@ -126,7 +126,7 @@ static NSString * access_token;
     NSString *popularMediaURLString;
     if(access_token)
     {
-        popularMediaURLString = [NSString stringWithFormat: @"%@/v1/media/popular?client_id=%@&access_token=%@&next_max_id=0", APIHost, InstagramAPIClientID, access_token];
+        popularMediaURLString = [NSString stringWithFormat: @"%@/v1/media/popular?client_id=%@&access_token=%@", APIHost, InstagramAPIClientID, access_token];
     }
     else
     {
