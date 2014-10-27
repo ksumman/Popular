@@ -10,6 +10,7 @@
 
 static NSString * const APIHost = @"https://api.instagram.com";
 static NSString * const InstagramAPIClientID = @"a5bccca60af74a0487d54a88005286a0";
+static const NSInteger MediaItemCount = 50;
 
 static PLDataModel *defaultDataModel = nil;
 static dispatch_once_t dispatchOnceToken;
@@ -84,8 +85,7 @@ static NSString * access_token;
             id jsonResponseData = [NSJSONSerialization JSONObjectWithData:responseData
                                                                   options:kNilOptions
                                                                     error:&error];
-            NSLog(@"Meta: %@", [jsonResponseData objectForKey: @"meta"]);
-            NSLog(@"pagination: %@", [jsonResponseData objectForKey: @"pagination"]);
+            //NSLog(@"pagination: %@", [jsonResponseData objectForKey: @"pagination"]);
             NSArray *photosData = [jsonResponseData objectForKey: @"data"];
 
             NSMutableArray *photos = [[NSMutableArray alloc] init];
@@ -126,11 +126,11 @@ static NSString * access_token;
     NSString *popularMediaURLString;
     if(access_token)
     {
-        popularMediaURLString = [NSString stringWithFormat: @"%@/v1/media/popular?client_id=%@&access_token=%@", APIHost, InstagramAPIClientID, access_token];
+        popularMediaURLString = [NSString stringWithFormat: @"%@/v1/media/popular?client_id=%@&access_token=%@&count=%ld", APIHost, InstagramAPIClientID, access_token, MediaItemCount];
     }
     else
     {
-        popularMediaURLString = [NSString stringWithFormat: @"%@/v1/media/popular?client_id=%@", APIHost, InstagramAPIClientID];
+        popularMediaURLString = [NSString stringWithFormat: @"%@/v1/media/popular?client_id=%@&count=%ld", APIHost, InstagramAPIClientID, MediaItemCount];
     }
     return popularMediaURLString;
 }
