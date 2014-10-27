@@ -8,10 +8,12 @@
 
 #import "PLDataModel.h"
 
+static NSString * const APIHost = @"https://api.instagram.com";
 static NSString * const InstagramAPIClientID = @"a5bccca60af74a0487d54a88005286a0";
 
-static PLDataModel *_defaultDataModel = nil;
+static PLDataModel *defaultDataModel = nil;
 static dispatch_once_t dispatchOnceToken;
+static NSString * access_token;
 
 /*--------------------------------------------------------------------------------*/
 @interface PLDataModel()
@@ -25,9 +27,9 @@ static dispatch_once_t dispatchOnceToken;
 + (instancetype) defaultDataModel
 {
     dispatch_once(&dispatchOnceToken, ^{
-        _defaultDataModel = [[self alloc] init];
+        defaultDataModel = [[self alloc] init];
     });
-    return _defaultDataModel;
+    return defaultDataModel;
 }
 
 /*--------------------------------------------------------------------------------*/
@@ -40,7 +42,7 @@ static dispatch_once_t dispatchOnceToken;
 /*--------------------------------------------------------------------------------*/
 -(void) dealloc
 {
-    _defaultDataModel = nil;
+    defaultDataModel = nil;
 }
 
 /*--------------------------------------------------------------------------------*/
@@ -57,7 +59,7 @@ static dispatch_once_t dispatchOnceToken;
 
 -(void) userAuthenticationSuccessful: (NSString *) accessToken
 {
-    
+    access_token = accessToken;
 }
 
 /*--------------------------------------------------------------------------------*/
@@ -67,10 +69,9 @@ static dispatch_once_t dispatchOnceToken;
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
-        NSURL *igPopularImagesURL = [NSURL URLWithString: [self igPopularImagesURLString]];
-        NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] init];
+        NSURL *igPopularImagesURL = [NSURL URLWithString: [self igPopularMediaURLString]];
+        NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL: igPopularImagesURL];
         [urlRequest setHTTPMethod:@"GET"];
-        [urlRequest setURL: igPopularImagesURL];
 
         NSError *urlRequestError;
         NSHTTPURLResponse *urlResponse;
@@ -120,15 +121,123 @@ static dispatch_once_t dispatchOnceToken;
 
 /*--------------------------------------------------------------------------------*/
 //! @returns URL string for popular images on Instagram.
--(NSString *) igPopularImagesURLString
+-(NSString *) igPopularMediaURLString
 {
-    NSString *endpointURLString = [NSString stringWithFormat: @"https://api.instagram.com/v1/media/popular?client_id=%@", InstagramAPIClientID];
-    return endpointURLString;
+    NSString *popularMediaURLString;
+    if(access_token)
+    {
+        popularMediaURLString = [NSString stringWithFormat: @"%@/v1/media/popular?client_id=%@&access_token=%@", APIHost, InstagramAPIClientID, access_token];
+    }
+    else
+    {
+        popularMediaURLString = [NSString stringWithFormat: @"%@/v1/media/popular?client_id=%@", APIHost, InstagramAPIClientID];
+    }
+    return popularMediaURLString;
 }
 
 /*--------------------------------------------------------------------------------*/
 #pragma mark - Like/Unlike Media
 /*--------------------------------------------------------------------------------*/
+//! Sends request to toggle the user_has_liked value for the given media item.
+-(void) toggleUserLike: (PLMediaItem *) mediaItem
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        BOOL userHasAlreadyLiked = [mediaItem userHasLiked];
+        if(userHasAlreadyLiked)
+        {
+            [self unlikeMediaItem: mediaItem];
+        }
+        else
+        {
+            [self likeMediaItem: mediaItem];
+        }
+    });
+}
 
+/*--------------------------------------------------------------------------------*/
+//-(void) likeMediaItem: (PLMediaItem *) mediaItem
+//{
+//    NSString *likeMediaURLString = [NSString stringWithFormat: @"%@/media/%@/likes", APIHost, mediaItem.identifier];
+//    NSURL *likeMediaURL = [NSURL URLWithString: likeMediaURLString];
+//    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL: likeMediaURL];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [urlRequest setValue:@"utf-8" forHTTPHeaderField:@"charset"];
+//    NSString *accessTokenString = [NSString stringWithFormat:@"access_token=%@", access_token];
+//    NSData *httpBody = [accessTokenString dataUsingEncoding:NSUTF8StringEncoding];
+//    [urlRequest setHTTPBody: httpBody];
+//
+//    NSError *urlRequestError;
+//    NSHTTPURLResponse *urlResponse;
+//    [NSURLConnection sendSynchronousRequest:urlRequest
+//                          returningResponse:&urlResponse
+//                                      error:&urlRequestError];
+//    if(urlResponse.statusCode == 200)
+//    {
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            [mediaItem setUserHasLiked: YES];
+//        });
+//    }
+//    else
+//    {
+//        //TODO: handle error
+//        NSLog(@"Error occurred: %ld: %@", (long)urlResponse.statusCode, urlRequestError);
+//    }
+//}
+-(void) likeMediaItem: (PLMediaItem *) mediaItem
+{
+    NSString *likeMediaURLString = [NSString stringWithFormat: @"%@/v1/media/%@/likes", APIHost, mediaItem.identifier];
+    NSURL *likeMediaURL = [NSURL URLWithString: likeMediaURLString];
+    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL: likeMediaURL];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setValue:@"utf-8" forHTTPHeaderField:@"charset"];
+    NSString *accessTokenString = [NSString stringWithFormat:@"access_token=%@", access_token];
+    NSData *httpBody = [accessTokenString dataUsingEncoding:NSUTF8StringEncoding];
+    [urlRequest setHTTPBody: httpBody];
+
+    NSError *urlRequestError;
+    NSHTTPURLResponse *urlResponse;
+    [NSURLConnection sendSynchronousRequest:urlRequest
+                          returningResponse:&urlResponse
+                                      error:&urlRequestError];
+    if(urlResponse.statusCode == 200)
+    {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [mediaItem setUserHasLiked: YES];
+        });
+    }
+    else
+    {
+        //TODO: handle error
+        NSLog(@"Error occurred: %ld: %@", (long)urlResponse.statusCode, urlRequestError);
+    }
+}
+
+/*--------------------------------------------------------------------------------*/
+-(void) unlikeMediaItem: (PLMediaItem *) mediaItem
+{
+    NSString *unlikeMediaURLString = [NSString stringWithFormat: @"%@/v1/media/%@/likes?access_token=%@", APIHost, mediaItem.identifier, access_token];
+    NSURL *unlikeMediaURL = [NSURL URLWithString: unlikeMediaURLString];
+    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL: unlikeMediaURL];
+    [urlRequest setHTTPMethod:@"DELETE"];
+
+    NSError *urlRequestError;
+    NSHTTPURLResponse *urlResponse;
+    [NSURLConnection sendSynchronousRequest:urlRequest
+                          returningResponse:&urlResponse
+                                      error:&urlRequestError];
+    if(urlResponse.statusCode == 200)
+    {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [mediaItem setUserHasLiked: NO];
+        });
+    }
+    else
+    {
+        //TODO: handle error
+        NSLog(@"Error occurred: %ld: %@", (long)urlResponse.statusCode, urlRequestError);
+    }
+}
 
 @end

@@ -26,15 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     self.view.backgroundColor = [UIColor whiteColor];
-
-    // TODO: check if access token is valid
-
-    // if not, show loginViewController
-//    [self showLoginViewController];
-    // else show the popular images
-    [self showMediaCollectionViewController];
+    [self showLoginViewController];
 }
 
 /*--------------------------------------------------------------------------------*/

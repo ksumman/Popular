@@ -35,7 +35,8 @@
     [self.likeButton setTitleColor:[UIColor darkGrayColor] forState: UIControlStateNormal];
     [self.likeButton setTitle:@"Liked" forState:UIControlStateSelected];
     [self.likeButton setTitleColor:[UIColor plThemeColor1] forState:UIControlStateSelected];
-    self.likeButton.selected = [_mediaItem likeStatus];
+    [self.likeButton setTitle:@"----" forState:UIControlStateHighlighted];
+    self.likeButton.selected = [_mediaItem userHasLiked];
 
     // Show the low-res image while the standard-res image is being downloaded
     self.imageView.image = [self.mediaItem lowResImage];
@@ -66,11 +67,11 @@
 {
     // remove observer from old mediaItem
     [_mediaItem removeObserver:self forKeyPath:@"likesCount"];
-    [_mediaItem removeObserver:self forKeyPath:@"likeStatus"];
+    [_mediaItem removeObserver:self forKeyPath:@"userHasLiked"];
 
     _mediaItem = mediaItem;
     self.likeCountLabel.text = [self likesCountLabelText: self.mediaItem.likesCount];
-    self.likeButton.selected = [_mediaItem likeStatus];
+    self.likeButton.selected = [_mediaItem userHasLiked];
 
     // add self as an observer to the likesCount of the media item
     [_mediaItem addObserver:self
@@ -78,7 +79,7 @@
                     options:NSKeyValueObservingOptionNew
                     context:nil];
     [_mediaItem addObserver:self
-                 forKeyPath:@"likeStatus"
+                 forKeyPath:@"userHasLiked"
                     options:NSKeyValueObservingOptionNew
                     context:nil];
 }
@@ -103,9 +104,9 @@
         {
             self.likeCountLabel.text = [self likesCountLabelText: self.mediaItem.likesCount];
         }
-        else if([keyPath isEqualToString: @"likeStatus"])
+        else if([keyPath isEqualToString: @"userHasLiked"])
         {
-            self.likeButton.selected = self.mediaItem.likeStatus;
+            self.likeButton.selected = self.mediaItem.userHasLiked;
         }
     }
 }
@@ -115,8 +116,8 @@
 /*--------------------------------------------------------------------------------*/
 - (IBAction)likeButtonTapped:(id)sender
 {
-    self.likeButton.selected = !self.likeButton.selected;
-    //    [[PLDataModel defaultDataModel] toggleLikeStatus: self.mediaItem];
+    [self.likeButton.titleLabel setText: @"----"];
+    [[PLDataModel defaultDataModel] toggleUserLike: self.mediaItem];
 }
 
 /*--------------------------------------------------------------------------------*/

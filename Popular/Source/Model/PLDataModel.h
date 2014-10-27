@@ -24,6 +24,6 @@ typedef void (^FetchImagesRequestCompletionBlock)(NSArray *images, NSError *erro
 -(void) fetchPopularImages: (FetchImagesRequestCompletionBlock) completionBlock;
 
 //! Call this method to like/unlike the media item.
--(void) toggleLikeStatus: (PLMediaItem *) mediaItem;
+-(void) toggleUserLike: (PLMediaItem *) mediaItem;
 
 @end

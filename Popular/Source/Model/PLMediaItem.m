@@ -55,6 +55,7 @@
 
         NSDictionary *likesDictionary = [dictionary objectForKey: @"likes"];
         _likesCount = [[likesDictionary objectForKey: @"count"] longValue];
+        _userHasLiked = [[dictionary objectForKey: @"user_has_liked"] integerValue] != 0;
 
         // low resolution image info
         NSDictionary *imageInfo = [[dictionary objectForKey: @"images"] objectForKey: @"low_resolution"];
@@ -138,11 +139,28 @@
 }
 
 /*--------------------------------------------------------------------------------*/
+#pragma mark - Like/Unlike
+/*--------------------------------------------------------------------------------*/
+-(void) setUserHasLiked: (BOOL) userHasLiked
+{
+    _userHasLiked = userHasLiked;
+
+    if(userHasLiked)
+    {
+        _likesCount++;
+    }
+    else
+    {
+        _likesCount--;
+    }
+}
+
+/*--------------------------------------------------------------------------------*/
 #pragma mark - Helper Methods
 /*--------------------------------------------------------------------------------*/
 -(NSString *) description
 {
-    NSString *description = [NSString stringWithFormat: @"\nType: %ld\nID: %@\nLow resolution size: %@\nStandard resolution size: %@\nThumbnail size: %@\n", self.type,  self.identifier, NSStringFromCGSize(self.lowResImageSize), NSStringFromCGSize(self.standardResImageSize), NSStringFromCGSize(self.thumbnailSize)];
+    NSString *description = [NSString stringWithFormat: @"\nType: %ld\nID: %@\nLink:%@\nLow resolution size: %@\nStandard resolution size: %@\nThumbnail size: %@\n", self.type,  self.identifier, self.link, NSStringFromCGSize(self.lowResImageSize), NSStringFromCGSize(self.standardResImageSize), NSStringFromCGSize(self.thumbnailSize)];
     return description;
 }
 

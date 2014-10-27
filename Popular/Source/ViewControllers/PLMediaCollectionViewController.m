@@ -12,7 +12,6 @@
 #import "PLImageViewController.h"
 #import "UIColor+Popular.h"
 
-
 static NSString * const ShowImageSegueIdentifier = @"ShowImageSegueIdentifier";
 
 /*--------------------------------------------------------------------------------*/
@@ -93,6 +92,20 @@ static NSString * const reuseIdentifier = @"PLMediaCell";
 }
 
 /*--------------------------------------------------------------------------------*/
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    if([[segue identifier] isEqualToString: ShowImageSegueIdentifier])
+    {
+        PLImageViewController *destinationImageViewController = segue.destinationViewController;
+        NSArray *indexPaths = [self.collectionView indexPathsForSelectedItems];
+        NSIndexPath *selectedItemIndexPath = [indexPaths firstObject];
+        PLMediaItem *selectedItem = [self.mediaItems objectAtIndex: selectedItemIndexPath.item];
+        destinationImageViewController.mediaItem = selectedItem;
+    }
+}
+
+/*--------------------------------------------------------------------------------*/
 #pragma mark <UICollectionViewDataSource>
 /*--------------------------------------------------------------------------------*/
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -141,19 +154,6 @@ static NSString * const reuseIdentifier = @"PLMediaCell";
                               sender:self];
 }
 
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    [super prepareForSegue:segue sender:sender];
-    if([[segue identifier] isEqualToString: ShowImageSegueIdentifier])
-    {
-        PLImageViewController *destinationImageViewController = segue.destinationViewController;
-        NSArray *indexPaths = [self.collectionView indexPathsForSelectedItems];
-        NSIndexPath *selectedItemIndexPath = [indexPaths firstObject];
-        PLMediaItem *selectedItem = [self.mediaItems objectAtIndex: selectedItemIndexPath.item];
-        destinationImageViewController.mediaItem = selectedItem;
-    }
-}
-
 /*--------------------------------------------------------------------------------*/
 #pragma mark <UICollectionViewDelegateFlowLayout>
 /*--------------------------------------------------------------------------------*/
@@ -164,6 +164,5 @@ static NSString * const reuseIdentifier = @"PLMediaCell";
 {
     return CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.width);
 }
-
 
 @end

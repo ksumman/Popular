@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, PLMediaType) {
 @property (strong, nonatomic, readonly) UIImage *thumbnailImage;
 
 //! YES if the current user has liked this media, NO otherwise.
-@property (assign, nonatomic, readonly) BOOL likeStatus;
+@property (assign, nonatomic) BOOL userHasLiked;
 
 //! @returns A new instance of PLPhotoInfo object initialized with information from the given dictionary.
 -(instancetype) initWithDictionary: (NSDictionary *) dictionary;
